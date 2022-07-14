@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{Title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/cv.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/skills.css') }}"/>
+
+</head>
+<body>
+  {% block body %}
+    <h1 class="page-head">{{pageHead}}</h1>
+    <h4 class="page-description">{{description}}</h4>
+      {% for i in skill %}
+         <div class="skill-box">
+           <div class="skill-name">{{i[0]}}</div>
+           <div class="skill-num">
+               <span data-width="{{i[1]}}%"></span>
+           </div>
+         </div>
+      {%endfor%}
+
+  {% endblock  %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(function(){
+         $(".skill-num span").each(function(){
+            $(this).animate({
+            'width': $(this).data("width")
+         },1000);
+         });
+     })
+</script>
+</body>
+</html>

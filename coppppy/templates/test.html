@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <h1>our info</h1>
+   <p>
+       Name : <span id="userid"></span><br/>
+       ID : <span id="ID"></span><br/>
+       Latitude : <span id="t"></span><br/>
+       Longitude : <span id="b"></span><br/>
+   </p>
+  <script>
+      const api_url ='https://api.wheretheiss.at/v1/satellites/25544';
+      async function getdata(){
+        const response = await fetch(api_url);
+        const data = await response.json();
+        const { name,id,latitude,longitude} = data;
+        document.getElementById('userid').textContent = name;
+        document.getElementById('ID').textContent = id;
+        document.getElementById('t').textContent = latitude;
+        document.getElementById('b').textContent = longitude;
+      }
+      getdata();
+  </script>
+</body>
+</html>
